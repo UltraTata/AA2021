@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="mainstyle.css">
+
+    <title>AA2021</title>
+
+	<script>
+		function alertBT(type,msg){
+			var cartel = `
+			<!--here comes the alert-->
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>`;
+			document.body.innerHTML = document.body.innerHTML.split("<!--here comes the alert-->").join(cartel);
+			
+		}
+		function validateStep(n){
+			var steps = ["index.html","quienessomos.html","destinos.html","arribosypartidas.html","nuestrosaviones.html"];
+			if(n == 1){
+				if(document.getElementById("thePass").value != ""){
+					if(document.getElementById("theTerms").checked){
+						return true;
+					}else{
+						window.location.href = "TERMALERT"+steps[n-1];
+					}
+				}else{
+					window.location.href = "PASSALERT"+steps[n-1];
+				}	
+			}
+			return false;
+		}
+		function nextstep(n){
+			var steps = ["index.html","quienessomos.html","destinos.html","arribosypartidas.html","nuestrosaviones.html"];
+			window.location.href = steps[n-1];
+		}
+	</script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: lightgreen !important;">
+		<a class="navbar-brand" href="index.html">AA2021</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			  <a class="nav-link" href="index.html">Home</a>
+			</li>
+			<li class="nav-item active">
+			  <a class="nav-link" href="destinos.html">Destinos</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="arribosypartidas.html">Arribos y Partidas</a>
+			  </li>
+			  <li class="nav-item active">
+				<a class="nav-link" href="nuestrosaviones.html">Nuestros Aviones</a>
+			  </li>
+		  </ul>
+		</div>
+	  </nav>
+	<div class="container">
+		
+		<!--here comes the alert-->
+		<br>
+		<h1>Destinos</h1>
+		<br>
+		<br>
+		<p>El nuevo sistema web está en fase de prueba y solo se puede utilizar para viajes dentro de Argentina.</p>
+		<br>
+		<br>
+		<div class="card-columns">
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/bariloche.jpg"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">Bariloche</h5>
+					<p class="card-text">Una bella ciudad rionegrina cuyos lagos atraen a miles de turistas cada año.</p>
+				</div>
+			</div>
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/cordoba.jpg"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">Córdoba</h5>
+					<p class="card-text">La segunda ciudad más grande de Argentina, misteriosamente lejos de la costa.</p>
+				</div>
+			</div>
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/sanluis.jpg"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">San Luis</h5>
+					<p class="card-text">Bella provincia del este del Cuyo argentino.</p>
+				</div>
+			</div>
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/misiones.jpg"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">Misiones</h5>
+					<p class="card-text">La partecita selvática de la Argentina.</p>
+				</div>
+			</div>
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/salta.jpg"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">Salta</h5>
+					<p class="card-text">Le dicen "Salta la Linda", creo que se entendió.</p>
+				</div>
+			</div>
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/mardelplata.png"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">Mar del Plata</h5>
+					<p class="card-text">Cuarta ciudad más grande de la Argentina. Es a donde la gente va cuando dice "Me voy a la costa una semana".</p>
+				</div>
+			</div>
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/Pinamar.jpg"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">Pinamar</h5>
+					<p class="card-text">Ciudad bonaerense con costa atlántica orientada al turismo..</p>
+				</div>
+			</div>
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/miramar.jpg"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">Miramar</h5>
+					<p class="card-text">Ciudad bonaerense con que originalmente tenía problemas con las dunas, que arruinaban cultivos, y que ahora nadie podría adivinar su pasado arenoso.</p>
+				</div>
+			</div>
+			<div class="card bg-primary text-light">
+				<div class="card-body">
+					<img class="card-img-top" src="img/sanbernardo.jpg"/>
+				</div>
+				<div class="card-footer">
+					<h5 class="card-title">San Bernardo</h5>
+					<p class="card-text">"La Perla de la Costa".</p>
+				</div>
+			</div>
+		</div>
+		<br><br>
+		<footer class="blockquote-footer">Por Ariel Treszezamsky Soto</footer>
+	</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+</html>

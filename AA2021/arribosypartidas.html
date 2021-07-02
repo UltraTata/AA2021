@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="mainstyle.css">
+
+    <title>AA2021</title>
+
+	<script>
+		function alertBT(type,msg){
+			var cartel = `
+			<!--here comes the alert-->
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>`;
+			document.body.innerHTML = document.body.innerHTML.split("<!--here comes the alert-->").join(cartel);
+			
+		}
+		function clearTable(){
+			document.body.innerHTML = document.body.innerHTML.split("<!--aca viene la tabla-->").join("<!--aca termina la tabla-->");
+			var first = document.body.innerHTML.split("<!--aca termina la tabla-->")[0];
+			var third = document.body.innerHTML.split("<!--aca termina la tabla-->")[2];
+			document.body.innerHTML = first + "<!--aca viene la tabla--><!--aca termina la tabla-->" + third;
+		}
+		function laTabla(ad){
+			var itemTres = "";
+			if(ad == "Arribos"){
+				itemTres = "Origen";
+			}else{
+				itemTres = "Destino";
+			}
+			var cartel = `
+			<!--aca viene la tabla-->
+			<h1>`+ad+`</h1>
+			<table class="table table-responsive">
+				<thead class="bg-primary text-light">
+					<tr>
+						<th scope="col">Código de Vuelo</th>
+						<th scope="col">Horario</th>
+						<th scope="col">`+itemTres+`</th>
+						<th scope="col">Terminal</th>
+						<th scope="col">Estimado</th>
+						<th scope="col">Estado</th>
+					</tr>
+				</thead>`;
+			var dice = 0.75;
+			while(dice>0.1){
+				dice = Math.random();
+				cartel = cartel + `<tr>
+										<th scope="col">`+cod()+`</th>
+										<th scope="col">`+hora(true)+`</th>
+										<th scope="col">`+orig()+`</th>
+										<th scope="col">`+terminal()+`</th>
+										<th scope="col">`+hora(Math.random()>0.25)+`</th>
+										<th scope="col">`+estado()+`</th>
+									</tr>`
+			}
+			cartel = cartel+"</table>";
+			document.body.innerHTML = document.body.innerHTML.split("<!--aca viene la tabla-->").join(cartel);
+			
+		}
+		function estado(){
+			var prov = ["<span class='text-success'>En hora</span>","<span class='text-success'>En hora</span>","<span class='text-success'>En hora</span>","<span class='text-primary'>En ruta</span>","<span class='text-danger'>Cancelado</span>","<span class='text-warning'>Demorado</span>","<span class='text-secondary'>Programado</span>"];
+			return prov[Math.round(Math.random()*(prov.length-1))];
+		}
+		function orig(){
+			var prov = ["CABA","Buenos Aires","Entre Ríos","Corrientes","Misiónes","Córdoba","Santa Fe","Chaco","Formosa","Santiago del Estero","Tucumán","Catamarca","La Rioja","Salta","Jujuy","San Luis","San Juan","La Pampa","Mendoza","Neuquen","Rio Negro","Chubut","Santa Cruz","Tierra del Fuego"];
+			var img = ["https://upload.wikimedia.org/wikipedia/commons/f/f5/Bandera_de_la_Ciudad_de_Buenos_Aires.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/1/15/Bandera_de_la_Provincia_de_Buenos_Aires.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/5/5b/Bandera_de_la_Provincia_de_Entre_R%C3%ADos.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/4/46/Bandera_de_la_Provincia_de_Corrientes.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/c/ce/Bandera_de_la_Provincia_de_Misiones.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/f/f6/Bandera_de_la_Provincia_de_C%C3%B3rdoba_2014.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/8/84/Bandera_de_la_Provincia_de_Santa_Fe.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/3/33/Bandera_de_la_Provincia_del_Chaco.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/4/42/Bandera_de_la_Provincia_de_Formosa.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/0/07/Bandera_de_la_Provincia_de_Santiago_del_Estero.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/c/ce/Bandera_de_la_Provincia_de_Tucum%C3%A1n.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/7/7b/Bandera_de_la_Provincia_de_Catamarca.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/6/60/Bandera_de_la_Provincia_de_La_Rioja.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/6/6a/Bandera_de_la_Provincia_de_Salta.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/c/c9/Bandera_de_la_Provincia_de_Jujuy.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/0/0e/Bandera_de_la_Provincia_de_San_Luis.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/8/8a/Bandera_de_San_Juan_Ciudadana.png",
+			"https://upload.wikimedia.org/wikipedia/commons/8/81/Bandera_de_la_Provincia_de_La_Pampa.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/7/7c/Bandera_de_la_Provincia_de_Mendoza.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/1/18/Bandera_de_la_Provincia_del_Neuquen.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/5/5d/Bandera_de_la_Provincia_del_R%C3%ADo_Negro.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/8/88/Bandera_de_la_Provincia_del_Chubut.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/4/45/Bandera_de_la_Provincia_de_Santa_Cruz.svg",
+			"https://upload.wikimedia.org/wikipedia/commons/9/94/Bandera_de_la_Provincia_de_Tierra_del_Fuego.svg"];
+			var n = Math.round(Math.random()*(prov.length-1));
+			return "<img style='border-style:solid;border-width:0.1px;' height='20' src='"+img[n]+"'/> "+prov[n];
+		}
+		function hora(cond){
+			if(cond){
+				var hs = Math.round(Math.random()*24);
+				var min = Math.round(Math.random()*60);
+				if(hs==24){
+					hs=0;
+				}
+				if(min<10){
+					min = "0"+min;
+				}
+				return hs + ":" + min;
+			}else{
+				return "";
+			}
+		}
+		function terminal(){
+			var abc = "ABCDEFGHIJKLMNÑOPQRSTVWXYZ0123456789";
+			var r = abc[Math.round(Math.random()*(abc.length-1))];
+			while(Math.random() > r.length/5){
+				r = r + abc[Math.round(Math.random()*(abc.length-1))];
+			}
+			return r;
+		}
+		function cod(){
+			var abc = "ABCDEFGHIJKLMNÑOPQRSTVWXYZ";
+			var undos = "0123456789";
+			var r = "";
+			r = r + abc[Math.round(Math.random()*(abc.length-1))];
+			r = r + abc[Math.round(Math.random()*(abc.length-1))];
+			r = r + " ";
+			r = r + undos[Math.round(Math.random()*(undos.length-1))];
+			r = r + undos[Math.round(Math.random()*(undos.length-1))];
+			r = r + undos[Math.round(Math.random()*(undos.length-1))];
+			r = r + undos[Math.round(Math.random()*(undos.length-1))];
+			return r;
+		}
+		function validateStep(n){
+			var steps = ["index.html","quienessomos.html","destinos.html","arribosypartidas.html","nuestrosaviones.html"];
+			if(n == 1){
+				if(document.getElementById("thePass").value != ""){
+					if(document.getElementById("theTerms").checked){
+						return true;
+					}else{
+						window.location.href = "TERMALERT"+steps[n-1];
+					}
+				}else{
+					window.location.href = "PASSALERT"+steps[n-1];
+				}	
+			}
+			return false;
+		}
+		function nextstep(n){
+			var steps = ["index.html","quienessomos.html","destinos.html","arribosypartidas.html","nuestrosaviones.html"];
+			window.location.href = steps[n-1];
+		}
+	</script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: lightgreen !important;">
+		<a class="navbar-brand" href="index.html">AA2021</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			  <a class="nav-link" href="index.html">Home</a>
+			</li>
+			<li class="nav-item active">
+			  <a class="nav-link" href="destinos.html">Destinos</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="arribosypartidas.html">Arribos y Partidas</a>
+			  </li>
+			  <li class="nav-item active">
+				<a class="nav-link" href="nuestrosaviones.html">Nuestros Aviones</a>
+			  </li>
+		  </ul>
+		</div>
+	  </nav>
+	<div class="container">
+		
+		<!--here comes the alert-->
+		<br>
+		<p>El nuevo sistema web está en fase de prueba y solo se puede utilizar para viajes dentro de Argentina.</p>
+		<br>
+		<button type="button" class="btn btn-outline-success" onclick="clearTable();laTabla('Partidas');laTabla('Arribos');">
+			Refrescar arribos y partidas
+		</button>
+		<br>
+		<br>
+		<!--aca viene la tabla-->
+		<!--aca termina la tabla-->
+		<br><br>
+		<footer class="blockquote-footer">Por Ariel Treszezamsky Soto</footer>
+	</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+</html>

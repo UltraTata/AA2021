@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="mainstyle.css">
+    <title>AA2021</title>
+
+	<script>
+		function alertBT(type,msg){
+			var cartel = `
+			<!--here comes the alert-->
+			`;
+			document.body.innerHTML = document.body.innerHTML.split("<!--here comes the alert-->").join(cartel);
+			
+		}
+		function validateStep(n){
+			var steps = ["index.html","quienessomos.html","destinos.html","arribosypartidas.html","nuestrosaviones.html"];
+			if(n == 1){
+				if(document.getElementById("thePass").value != ""){
+					if(document.getElementById("theTerms").checked){
+						return true;
+					}else{
+						window.location.href = "TERMALERT"+steps[n-1];
+					}
+				}else{
+					window.location.href = "PASSALERT"+steps[n-1];
+				}	
+			}
+			return false;
+		}
+		function nextstep(n){
+			var steps = ["index.html","quienessomos.html","destinos.html","arribosypartidas.html","nuestrosaviones.html"];
+			window.location.href = steps[n-1];
+		}
+	</script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: lightgreen !important;">
+		<a class="navbar-brand" href="index.html">AA2021</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			  <a class="nav-link" href="index.html">Home</a>
+			</li>
+			<li class="nav-item active">
+			  <a class="nav-link" href="destinos.html">Destinos</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="arribosypartidas.html">Arribos y Partidas</a>
+			  </li>
+			  <li class="nav-item active">
+				<a class="nav-link" href="nuestrosaviones.html">Nuestros Aviones</a>
+			  </li>
+		  </ul>
+		</div>
+	  </nav>
+	<div class="container">
+		
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			Por favor, ingrese su <strong>contraseña</strong>.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div id="terms" class="modal" tabindex="-1">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title">Validación</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <p>Primero debes de resolver esta ECaptcha para comfirmar que eres un humano.</p>
+				  <div class="input-group mb-3">
+					<div class="input-group-prepend">
+					</div>
+					<span type="text" class="form-control d-flex justify-content-center text-light bg-danger" aria-label="Text input with checkbox">El ECaptcha no está disponible ahora</span>
+				  </div>
+				</div>
+				<div class="modal-body" style="border-top: 1px solid #dee2e6;">
+					<p>Posteriormente, ingrese su contraseña</p>
+					<div class="input-group">
+					  <input id="thePass" class="col-12 d-flex justify-content-center" type="password">
+					</div>
+				  </div>
+				  <div class="modal-body" style="border-top: 1px solid #dee2e6;">
+					<p>Y, por último, acepte los términos y condiciones.</p>
+					<p>Estos pueden verse <a href="term.html">aquí</a></p>
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+						<div class="input-group-text">
+						  <input id="theTerms" type="checkbox" aria-label="Checkbox for following text input">
+						</div>
+					  </div>
+					  <span type="text" class="form-control d-flex justify-content-center" aria-label="Text input with checkbox">Acepto términos y condiciónes</span>
+					</div>
+				  </div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="if(validateStep(1)){nextstep(2);}">Segundo paso</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <br>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#terms">
+			Ingresar al sitio en construcción
+		</button>
+		<br><br>
+		<footer class="blockquote-footer">Por Ariel Treszezamsky Soto</footer>
+	</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+</html>
